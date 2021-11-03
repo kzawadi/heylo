@@ -3,5 +3,10 @@
     "counterAppBarTitle": "Counter",
     "@counterAppBarTitle": {
         "description": "Text shown in the AppBar of the Counter Page"
+    },
+
+    "heyloAppBarTittle": "Heylo",
+    "@heyloAppBarTittle":{
+        "description":"The title pf the App"
     }
 }

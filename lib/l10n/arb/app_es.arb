@@ -3,5 +3,10 @@
     "counterAppBarTitle": "Contador",
     "@counterAppBarTitle": {
         "description": "Texto mostrado en la AppBar de la página del contador"
+    },
+
+    "heyloAppBarTittle": "Heylo espaniol",
+    "@heyloAppBarTittle":{
+        "description":"The title pf the App in espaniol"
     }
 }

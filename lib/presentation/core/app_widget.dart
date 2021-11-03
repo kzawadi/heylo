@@ -7,6 +7,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:zawadi/l10n/l10n.dart';
 import 'package:zawadi/presentation/routes/router.gr.dart' as app_router;
 
 class AppWidget extends StatelessWidget {
@@ -37,6 +39,11 @@ class AppWidget extends StatelessWidget {
           secondary: Colors.blueAccent,
         ),
       ),
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+      ],
+      supportedLocales: AppLocalizations.supportedLocales,
     );
   }
 }
