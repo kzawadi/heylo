@@ -33,9 +33,9 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
-  // await Firebase.initializeApp();
   WidgetsFlutterBinding.ensureInitialized();
   configureInjection(Environment.prod);
+  await Firebase.initializeApp();
 
   await runZonedGuarded(
     () async => runApp(await builder()),

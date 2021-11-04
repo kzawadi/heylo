@@ -13,5 +13,9 @@ analyzer:
     missing_return: error
     must_be_immutable: error
     sort_unnamed_constructors_first: ignore
+
+
+  exclude: [build/**, lib/**.freezed.dart, lib/**.g.dart,lib/**.config.dart,lib/**.gr.dart]
+
     
 

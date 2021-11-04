@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "216972179356",
+    "project_id": "heylo-b44ef",
+    "storage_bucket": "heylo-b44ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216972179356:android:81e660278a0fc068d17a59",
+        "android_client_info": {
+          "package_name": "com.heylo.zawadi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "216972179356-4fpj2o1ns88fipcpfrgisobh4at6m2i7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.heylo.zawadi",
+            "certificate_hash": "f0a14f5f09af3d58a5643a5efb094d4d73f76113"
+          }
+        },
+        {
+          "client_id": "216972179356-kgtbt38fb6u3h2ie8smgaifkpr9cdfii.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANqMNVaO5W0svPE3jnQyuGQoxqHW07V1M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "216972179356-kgtbt38fb6u3h2ie8smgaifkpr9cdfii.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -5,7 +5,6 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
-import 'package:zawadi/app/app.dart';
 import 'package:zawadi/bootstrap.dart';
 import 'package:zawadi/presentation/core/app_widget.dart';
 

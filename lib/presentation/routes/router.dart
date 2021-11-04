@@ -1,14 +1,13 @@
 import 'package:auto_route/annotations.dart';
-import 'package:zawadi/counter/view/counter_page.dart';
+import 'package:zawadi/presentation/sign_in/sign_in_page.dart';
 import 'package:zawadi/presentation/splash/splash_page.dart';
+import 'package:zawadi/presentation/splash/splash_page2.dart';
 
-// ignore_for_file: implicit_dynamic_type
 @MaterialAutoRouter(
   routes: <AutoRoute>[
-    MaterialRoute(page: SplashPage),
-    MaterialRoute(page: CounterPage, initial: true),
-    // MaterialRoute(page: SplashPage2),
-    // MaterialRoute(page: NotesOverviewPage),
+    MaterialRoute<dynamic>(page: SplashPage, initial: true),
+    MaterialRoute<dynamic>(page: SplashPage2),
+    MaterialRoute<dynamic>(page: SignInPage),
     // MaterialRoute(page: NoteFormPage, fullscreenDialog: true),
   ],
 )
