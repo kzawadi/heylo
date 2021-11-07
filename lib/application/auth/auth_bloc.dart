@@ -11,57 +11,29 @@ part 'auth_state.dart';
 
 part 'auth_bloc.freezed.dart';
 
+///This bloc handle all event and state of the apps user authentication journey
 @injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this._authFacade) : super(const AuthState.initial()) {
-    on<AuthCheckRequested>(_authCheckRequested);
-    on<SignedOut>(_signOut);
+    on<AuthEvent>(_authEventshandler);
   }
 
   final IAuthFacade _authFacade;
 
-  Future _authCheckRequested(
-    AuthCheckRequested event,
-    Emitter<AuthState> emit,
-  ) async {
-    final userOption = await _authFacade.getSignedInUser();
-    emit(
-      userOption.fold(
-        () => const AuthState.unauthenticated(),
-        (_) => const AuthState.authenticated(),
-      ),
+  Future _authEventshandler(AuthEvent event, Emitter<AuthState> emit) async {
+    await event.map(
+      authCheckRequested: (e) async {
+        final userOption = await _authFacade.getSignedInUser();
+        emit(
+          userOption.fold(
+            () => const AuthState.unauthenticated(),
+            (_) => const AuthState.authenticated(),
+          ),
+        );
+      },
+      signedOut: (e) async {
+        await _authFacade.signOut();
+      },
     );
   }
-
-  Future _signOut(
-    SignedOut event,
-    Emitter<AuthState> emit,
-  ) async {
-    await _authFacade.signOut();
-
-    emit(const AuthState.unauthenticated());
-  }
 }
-// class AuthBloc extends Bloc<AuthEvent, AuthState> {
-//   AuthBloc(this._authFacade) : super(const AuthState.initial());
-//   final IAuthFacade _authFacade;
-
-//   @override
-//   Stream<AuthState> mapEventToState(
-//     AuthEvent event,
-//   ) async* {
-//     yield* event.map(
-//       authCheckRequested: (e) async* {
-//         final userOption = await _authFacade.getSignedInUser();
-//         yield userOption.fold(
-//           () => const AuthState.unauthenticated(),
-//           (_) => const AuthState.authenticated(),
-//         );
-//       },
-//       signedOut: (e) async* {
-//         await _authFacade.signOut();
-//         yield const AuthState.unauthenticated();
-//       },
-//     );
-//   }
-// }

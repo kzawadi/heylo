@@ -4,7 +4,7 @@ import 'package:zawadi/domain/core/value_objects.dart';
 import 'package:zawadi/domain/core/value_validators.dart';
 
 class EmailAddress extends ValueObject<String> {
-  factory EmailAddress(String input) {
+  factory EmailAddress(String? input) {
     return EmailAddress._(
       validateEmailAddress(input),
     );

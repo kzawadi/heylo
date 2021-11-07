@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zawadi/application/auth/auth_bloc.dart';
 import 'package:zawadi/application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'package:zawadi/domain/auth/value_objects.dart';
 import 'package:zawadi/presentation/routes/router.gr.dart';
 
+///This is a form widget which handle inputs of [EmailAddress] and [Password]
+///and listerns the [SignInFormBloc] , shows errors in sign/register inputs if any
+///after a very succesful procedure it navigate to success route.
 class SignInForm extends StatelessWidget {
   const SignInForm({Key? key}) : super(key: key);
 
@@ -20,7 +24,7 @@ class SignInForm extends StatelessWidget {
                 behavior: SnackBarBehavior.floating,
                 content: Text(
                   failure.map(
-                    cancelledByUser: (_) => 'Cancelled',
+                    cancelledByUser: (_) => 'You have Cancelled the login in',
                     serverError: (_) => 'Server error',
                     emailAlreadyInUse: (_) => 'Email already in use',
                     invalidEmailAndPasswordCombination: (_) =>
@@ -36,10 +40,10 @@ class SignInForm extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             },
             (_) {
-              AutoRouter.of(context).replace(const SplashPage2Route());
               context
                   .read<AuthBloc>()
                   .add(const AuthEvent.authCheckRequested());
+              AutoRouter.of(context).replace(const SplashPage2Route());
             },
           ),
         );
