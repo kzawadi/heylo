@@ -5,6 +5,7 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
+import 'package:designsys/designsys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -27,32 +28,36 @@ class AppWidget extends StatelessWidget {
               getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
         )
       ],
-      child: MaterialApp.router(
-        routeInformationParser: _appRouter.defaultRouteParser(),
-        routerDelegate: _appRouter.delegate(
-          initialRoutes: [const app_router.SplashPageRoute()],
-        ),
+      child: ZawadiApp(
         title: 'Heylo',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData.light().copyWith(
-          primaryColor: Colors.green[800],
-          floatingActionButtonTheme: FloatingActionButtonThemeData(
-            backgroundColor: Colors.blue[900],
+        primaryDarkColor: Colors.indigo[100],
+        primaryLightColor: Colors.indigo[50],
+        home: MaterialApp.router(
+          routeInformationParser: _appRouter.defaultRouteParser(),
+          routerDelegate: _appRouter.delegate(
+            initialRoutes: [const app_router.OnBoardingPageRoute()],
           ),
-          inputDecorationTheme: InputDecorationTheme(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData.light().copyWith(
+            primaryColor: Colors.green[800],
+            floatingActionButtonTheme: FloatingActionButtonThemeData(
+              backgroundColor: Colors.blue[900],
+            ),
+            inputDecorationTheme: InputDecorationTheme(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+            colorScheme: ColorScheme.fromSwatch().copyWith(
+              secondary: Colors.blueAccent,
             ),
           ),
-          colorScheme: ColorScheme.fromSwatch().copyWith(
-            secondary: Colors.blueAccent,
-          ),
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+          ],
+          supportedLocales: AppLocalizations.supportedLocales,
         ),
-        localizationsDelegates: const [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-        ],
-        supportedLocales: AppLocalizations.supportedLocales,
       ),
     );
   }

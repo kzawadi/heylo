@@ -5,6 +5,7 @@ linter:
   rules:
     public_member_api_docs: false
     sort_pub_dependencies: false
+    library_private_types_in_public_api: false
 
 
 analyzer:
@@ -12,7 +13,7 @@ analyzer:
     missing_required_param: error
     missing_return: error
     must_be_immutable: error
-    sort_unnamed_constructors_first: ignore
+    sort_unnamed_constructors_first: error
 
 
   exclude: [build/**, lib/**.freezed.dart, lib/**.g.dart,lib/**.config.dart,lib/**.gr.dart]
