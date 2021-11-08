@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../app_styles.dart';
+import 'package:zawadi/presentation/splash/app_styles.dart';
 
 class MyCheckBox extends StatefulWidget {
   const MyCheckBox({

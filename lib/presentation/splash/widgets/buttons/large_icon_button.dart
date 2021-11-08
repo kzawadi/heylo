@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../app_styles.dart';
+import 'package:zawadi/presentation/splash/app_styles.dart';
 
 class LargeIconButton extends StatelessWidget {
   const LargeIconButton({
@@ -14,21 +14,26 @@ class LargeIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {},
-      child: Container(
+      style: TextButton.styleFrom(
+        backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+      ),
+      child: SizedBox(
         height: 30,
         child: Row(
           children: [
-            SizedBox(
+            const SizedBox(
               width: 20,
             ),
             Expanded(
-              flex: 1,
-              child: Container(
+              child: SizedBox(
                 // height: 25,
                 child: Image.asset(iconImage),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 20,
             ),
             Expanded(
@@ -39,12 +44,6 @@ class LargeIconButton extends StatelessWidget {
               ),
             ),
           ],
-        ),
-      ),
-      style: TextButton.styleFrom(
-        backgroundColor: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
         ),
       ),
     );

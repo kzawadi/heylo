@@ -29,9 +29,10 @@ final kBodyText2 = TextStyle(
 );
 
 final kBodyText3 = TextStyle(
-    color: kSecondaryColor,
-    fontSize: SizeConfig.blockSizeH! * 3.8,
-    fontWeight: FontWeight.normal);
+  color: kSecondaryColor,
+  fontSize: SizeConfig.blockSizeH! * 3.8,
+  fontWeight: FontWeight.normal,
+);
 
 final kInputBorder = OutlineInputBorder(
   borderRadius: BorderRadius.circular(12),
@@ -44,7 +45,7 @@ final kInputHintStyle = kBodyText2.copyWith(
 );
 
 class SizeConfig {
-  static MediaQueryData? _mediaQueryData;
+  late MediaQueryData? _mediaQueryData;
   static double? screenWidth;
   static double? screenHeight;
   static double? blockSizeH;

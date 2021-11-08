@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:zawadi/presentation/routes/router.gr.dart';
 import 'package:zawadi/presentation/splash/app_styles.dart';
 import 'package:zawadi/presentation/splash/widgets/buttons/my_text_button.dart';
 import 'package:zawadi/presentation/splash/widgets/buttons/onboard_nav_btn.dart';
@@ -42,6 +44,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
             Expanded(
               flex: 9,
               child: PageView.builder(
+                physics: const BouncingScrollPhysics(),
                 controller: _pageController,
                 onPageChanged: (value) {
                   setState(() {
@@ -113,11 +116,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                         child: MyTextButton(
                           buttonName: 'Get Started',
                           onPressed: () {
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //       builder: (context) => SignUpPage(),
-                            //     ));
+                            AutoRouter.of(context).navigate(
+                              const SigningUpPageRoute(),
+                            );
                           },
                           bgColor: kPrimaryColor,
                         ),
@@ -129,10 +130,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                           OnBoardNavBtn(
                             name: 'Skip',
                             onPressed: () {
-                              // Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: (context) => SignUpPage()));
+                              AutoRouter.of(context).navigate(
+                                const SigningUpPageRoute(),
+                              );
                             },
                           ),
                           Row(

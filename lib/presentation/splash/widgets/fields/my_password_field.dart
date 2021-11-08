@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../app_styles.dart';
+import 'package:zawadi/presentation/splash/app_styles.dart';
 
 class MyPasswordField extends StatefulWidget {
   const MyPasswordField({
@@ -65,7 +65,7 @@ class _MyPasswordFieldState extends State<MyPasswordField> {
             padding: const EdgeInsets.only(right: 16),
             child: Container(
               // height: 60,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 border: Border(
                   right: BorderSide(
                     width: 2,
