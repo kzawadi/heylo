@@ -1,4 +1,6 @@
+import 'package:designsys/designsys.dart';
 import 'package:flutter/material.dart';
+import 'package:zawadi/presentation/sign_in/login_page.dart';
 import 'package:zawadi/presentation/sign_in/validators.dart';
 import 'package:zawadi/presentation/splash/app_styles.dart';
 import 'package:zawadi/presentation/splash/widgets/buttons/large_icon_button.dart';
@@ -42,7 +44,7 @@ class _SignUpPageState extends State<SigningUpPage> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     final height = SizeConfig.blockSizeV!;
-    return Scaffold(
+    return ZawadiScaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
@@ -159,7 +161,7 @@ class _SignUpPageState extends State<SigningUpPage> {
                     ),
                     const SmallTextButton(
                       buttonText: 'Sign in',
-                      page: SigningUpPage(),
+                      page: LoginPage(),
                     )
                   ],
                 ),
