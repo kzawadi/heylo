@@ -13,6 +13,7 @@ import 'package:zawadi/application/auth/auth_bloc.dart';
 import 'package:zawadi/injection.dart';
 import 'package:zawadi/l10n/l10n.dart';
 import 'package:zawadi/presentation/routes/router.gr.dart' as app_router;
+import 'package:zawadi/presentation/splash/app_styles.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
@@ -26,12 +27,12 @@ class AppWidget extends StatelessWidget {
         BlocProvider(
           create: (context) =>
               getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
-        )
+        ),
       ],
       child: ZawadiApp(
         title: 'Heylo',
-        primaryDarkColor: Colors.indigo[100],
-        primaryLightColor: Colors.indigo[50],
+        primaryDarkColor: kPrimaryColor,
+        primaryLightColor: kPrimaryColor,
         home: MaterialApp.router(
           routeInformationParser: _appRouter.defaultRouteParser(),
           routerDelegate: _appRouter.delegate(

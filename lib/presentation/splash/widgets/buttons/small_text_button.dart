@@ -5,23 +5,20 @@ class SmallTextButton extends StatelessWidget {
   const SmallTextButton({
     Key? key,
     required this.buttonText,
-    required this.page,
+    // required this.page
+    this.onTap,
   }) : super(key: key);
 
   final String buttonText;
-  final Widget page;
+  // final Widget page;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        onTap: () {
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute<dynamic>(builder: (context) => page),
-          // );
-        },
+        onTap: onTap,
         splashColor: kSecondaryColor.withOpacity(0.2),
         borderRadius: BorderRadius.circular(12),
         child: Padding(

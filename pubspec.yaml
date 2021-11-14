@@ -42,7 +42,8 @@ dependencies:
 
   #UI/UX
   designsys:
-    git: https://github.com/kzawadi/zawadiCore.git
+    path: C:\Users\kelvi\Desktop\zawadi\designsys
+    # git: https://github.com/kzawadi/zawadiCore.git
   form_field_validator: ^1.1.0  #todo remove
 
 dev_dependencies:

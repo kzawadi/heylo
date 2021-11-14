@@ -1,54 +1,72 @@
 import 'package:flutter/material.dart';
 import 'package:zawadi/presentation/splash/app_styles.dart';
 
-class MyTextFormField extends StatelessWidget {
-  const MyTextFormField({
+class MyPasswordField extends StatefulWidget {
+  const MyPasswordField({
     Key? key,
-    required this.hint,
-    required this.icon,
     required this.fillColor,
-    required this.inputType,
-    required this.inputAction,
     required this.focusNode,
     required this.validator,
+    this.onChanged,
   }) : super(key: key);
 
-  final String hint;
-  final IconData icon;
   final Color fillColor;
-  final TextInputType inputType;
-  final TextInputAction inputAction;
   final FocusNode focusNode;
   final String? Function(String?) validator;
+  final void Function(String)? onChanged;
+  @override
+  _MyPasswordFieldState createState() => _MyPasswordFieldState();
+}
+
+class _MyPasswordFieldState extends State<MyPasswordField> {
+  bool hidePassword = true;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: TextFormField(
-        style: focusNode.hasFocus
+        style: widget.focusNode.hasFocus
             ? kBodyText2.copyWith(color: kPrimaryColor)
             : kInputHintStyle,
         cursorColor: kSecondaryColor,
-        keyboardType: inputType,
-        textInputAction: inputAction,
-        focusNode: focusNode,
-        validator: validator,
+        textInputAction: TextInputAction.done,
+        focusNode: widget.focusNode,
+        obscureText: hidePassword,
+        validator: widget.validator,
+        onChanged: widget.onChanged,
         decoration: InputDecoration(
           filled: true,
-          fillColor: fillColor,
+          fillColor: widget.fillColor,
           border: kInputBorder,
           enabledBorder: kInputBorder,
-          hintText: hint,
+          hintText: 'Password',
           hintStyle: kInputHintStyle,
           // contentPadding: EdgeInsets.all(0),
-          // since we removed container remove content padding 0 to
-          // enable default padding for the field
+          suffix: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 14),
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  if (hidePassword == true) {
+                    hidePassword = false;
+                  } else {
+                    hidePassword = true;
+                  }
+                });
+              },
+              child: Text(
+                'Show',
+                style: kBodyText3.copyWith(
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+            ),
+          ),
           prefixIcon: Padding(
             padding: const EdgeInsets.only(right: 16),
             child: Container(
               // height: 60,
-              // this container height is causing the error
               decoration: const BoxDecoration(
                 border: Border(
                   right: BorderSide(
@@ -60,8 +78,8 @@ class MyTextFormField extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Icon(
-                  icon,
-                  color: focusNode.hasFocus
+                  Icons.lock_outline,
+                  color: widget.focusNode.hasFocus
                       ? kPrimaryColor
                       : kSecondaryColor.withOpacity(0.5),
                 ),

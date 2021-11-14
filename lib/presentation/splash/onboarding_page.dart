@@ -117,7 +117,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                           buttonName: 'Get Started',
                           onPressed: () {
                             AutoRouter.of(context).navigate(
-                              const SigningUpPageRoute(),
+                              const SignUpPageRoute(),
                             );
                           },
                           bgColor: kPrimaryColor,
@@ -131,7 +131,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                             name: 'Skip',
                             onPressed: () {
                               AutoRouter.of(context).navigate(
-                                const SigningUpPageRoute(),
+                                const SignUpPageRoute(),
                               );
                             },
                           ),

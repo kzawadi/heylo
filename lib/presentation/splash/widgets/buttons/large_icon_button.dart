@@ -6,14 +6,16 @@ class LargeIconButton extends StatelessWidget {
     Key? key,
     required this.buttonName,
     required this.iconImage,
+    required this.onPressed,
   }) : super(key: key);
 
   final String buttonName, iconImage;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {},
+      onPressed: onPressed,
       style: TextButton.styleFrom(
         backgroundColor: Colors.white,
         shape: RoundedRectangleBorder(

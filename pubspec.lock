@@ -242,11 +242,9 @@ packages:
   designsys:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "1093775a7212da470430dcec00b694b168ff97f5"
-      url: "https://github.com/kzawadi/zawadiCore.git"
-    source: git
+      path: "C:\\Users\\kelvi\\Desktop\\zawadi\\designsys"
+      relative: false
+    source: path
     version: "0.0.1"
   fake_async:
     dependency: transitive

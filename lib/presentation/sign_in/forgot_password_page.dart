@@ -1,10 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:zawadi/presentation/sign_in/sign_up_page.dart';
+import 'package:zawadi/presentation/routes/router.gr.dart';
 import 'package:zawadi/presentation/sign_in/validators.dart';
+import 'package:zawadi/presentation/sign_in/widgets/fields/my_text_form_field.dart';
 import 'package:zawadi/presentation/splash/app_styles.dart';
 import 'package:zawadi/presentation/splash/widgets/buttons/my_text_button.dart';
 import 'package:zawadi/presentation/splash/widgets/buttons/small_text_button.dart';
-import 'package:zawadi/presentation/splash/widgets/fields/my_text_form_field.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({Key? key}) : super(key: key);
@@ -136,9 +137,14 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                               'Remember password?',
                               style: kBodyText3,
                             ),
-                            const SmallTextButton(
+                            SmallTextButton(
                               buttonText: 'Login',
-                              page: SigningUpPage(),
+                              // page: SigningUpPage(),
+                              onTap: () {
+                                AutoRouter.of(context).navigate(
+                                  const SignInPageRoute(),
+                                );
+                              },
                             ),
                           ],
                         ),
