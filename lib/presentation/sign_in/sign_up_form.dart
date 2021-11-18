@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zawadi/application/auth/auth_bloc.dart';
 import 'package:zawadi/application/auth/sign_up_form/sign_up_form_bloc.dart';
+import 'package:zawadi/l10n/l10n.dart';
 import 'package:zawadi/presentation/routes/router.gr.dart';
 import 'package:zawadi/presentation/sign_in/validators.dart';
 import 'package:zawadi/presentation/sign_in/widgets/fields/my_check_box.dart';
@@ -46,6 +47,7 @@ class _SigningUpFormState extends State<SigningUpForm> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     SizeConfig().init(context);
     final height = SizeConfig.blockSizeV!;
     return BlocConsumer<SignUpFormBloc, SignUpFormState>(
@@ -58,11 +60,11 @@ class _SigningUpFormState extends State<SigningUpForm> {
                 behavior: SnackBarBehavior.floating,
                 content: Text(
                   failure.map(
-                    cancelledByUser: (_) => 'You have Cancelled the login in',
-                    serverError: (_) => 'Server error',
-                    emailAlreadyInUse: (_) => 'Email already in use',
+                    cancelledByUser: (_) => l10n.cancelledByUser,
+                    serverError: (_) => l10n.serverError,
+                    emailAlreadyInUse: (_) => l10n.emailAlreadyInUse,
                     invalidEmailAndPasswordCombination: (_) =>
-                        'Invalid email and password combination',
+                        l10n.invalidEmailAndPasswordCombination,
                   ),
                 ),
                 action: SnackBarAction(
@@ -101,7 +103,7 @@ class _SigningUpFormState extends State<SigningUpForm> {
                       height: height * 2,
                     ),
                     Text(
-                      'Create Your Account',
+                      l10n.createAccont,
                       style: kTitle2,
                     ),
                     SizedBox(
@@ -116,7 +118,7 @@ class _SigningUpFormState extends State<SigningUpForm> {
                         children: [
                           MyTextFormField(
                             fillColor: Colors.white,
-                            hint: 'Name',
+                            hint: l10n.name,
                             icon: Icons.person,
                             inputAction: TextInputAction.next,
                             inputType: TextInputType.name,
@@ -124,7 +126,7 @@ class _SigningUpFormState extends State<SigningUpForm> {
                             validator: nameValidator,
                           ),
                           MyTextFormField(
-                            hint: 'Email',
+                            hint: l10n.email,
                             icon: Icons.email_outlined,
                             fillColor: Colors.white,
                             inputType: TextInputType.emailAddress,
@@ -140,7 +142,7 @@ class _SigningUpFormState extends State<SigningUpForm> {
                                 .value
                                 .fold(
                                   (f) => f.maybeMap(
-                                    invalidEmail: (_) => 'Invalid Email',
+                                    invalidEmail: (_) => l10n.invalidEmail,
                                     orElse: () => null,
                                   ),
                                   (_) => null,
@@ -159,20 +161,20 @@ class _SigningUpFormState extends State<SigningUpForm> {
                                 .value
                                 .fold(
                                   (f) => f.maybeMap(
-                                    shortPassword: (_) => 'Short Password',
+                                    shortPassword: (_) => l10n.shortPassword,
                                     orElse: () => null,
                                   ),
                                   (_) => null,
                                 ),
                           ),
-                          const MyCheckBox(
-                            text: 'Keep me signed in',
+                          MyCheckBox(
+                            text: l10n.keepMeIn,
                           ),
                           const MyCheckBox(
                             text: 'Email me about special pricing and more',
                           ),
                           MyTextButton(
-                            buttonName: 'Create Account',
+                            buttonName: l10n.createAccont,
                             onPressed: () {
                               context.read<SignUpFormBloc>().add(
                                     const SignUpFormEvent
@@ -195,7 +197,7 @@ class _SigningUpFormState extends State<SigningUpForm> {
                             ),
                           ),
                           Text(
-                            'Or sign in with',
+                            l10n.orSignInWith,
                             style: kBodyText3,
                           ),
                           Expanded(
@@ -211,7 +213,7 @@ class _SigningUpFormState extends State<SigningUpForm> {
                       children: [
                         Expanded(
                           child: LargeIconButton(
-                            buttonName: 'Google',
+                            buttonName: l10n.google,
                             iconImage: 'assets/images/auth/google_icon.png',
                             onPressed: () {
                               context.read<SignUpFormBloc>().add(
@@ -226,7 +228,7 @@ class _SigningUpFormState extends State<SigningUpForm> {
                         ),
                         Expanded(
                           child: LargeIconButton(
-                            buttonName: 'Facebook',
+                            buttonName: l10n.facebook,
                             iconImage: 'assets/images/auth/facebook_icon.png',
                             onPressed: () {},
                           ),
@@ -240,11 +242,11 @@ class _SigningUpFormState extends State<SigningUpForm> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Already have an account? ',
+                          l10n.alreadyHaveAnAccount,
                           style: kBodyText3,
                         ),
                         SmallTextButton(
-                          buttonText: 'Sign in',
+                          buttonText: l10n.signIn,
                           // page: LoginPage(),
                           onTap: () {
                             AutoRouter.of(context).navigate(

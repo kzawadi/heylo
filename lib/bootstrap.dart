@@ -9,6 +9,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
 import 'package:injectable/injectable.dart';
@@ -29,16 +30,26 @@ class AppBlocObserver extends BlocObserver {
 }
 
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
-  Bloc.observer = AppBlocObserver();
-  FlutterError.onError = (details) {
-    log(details.exceptionAsString(), stackTrace: details.stack);
-  };
-  WidgetsFlutterBinding.ensureInitialized();
-  configureInjection(Environment.prod);
-  await Firebase.initializeApp();
+  await BlocOverrides.runZoned(
+    () async {
+      // ...
+      //   },
+      //   blocObserver: AppBlocObserver(),
+      //   // eventTransformer: customEventTransformer(),
+      // );
+      FlutterError.onError = (details) {
+        log(details.exceptionAsString(), stackTrace: details.stack);
+      };
+      WidgetsFlutterBinding.ensureInitialized();
+      configureInjection(Environment.prod);
+      await Firebase.initializeApp();
 
-  await runZonedGuarded(
-    () async => runApp(await builder()),
-    (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
+      await runZonedGuarded(
+        () async => runApp(await builder()),
+        (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
+      );
+    },
+    blocObserver: AppBlocObserver(),
+    eventTransformer: sequential<dynamic>(),
   );
 }
