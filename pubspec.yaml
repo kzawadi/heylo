@@ -7,63 +7,48 @@ environment:
   sdk: ">=2.14.0 <3.0.0"
 
 dependencies:
-  flutter:
-    sdk: flutter    
-  flutter_localizations:
-    sdk: flutter
-
-  #architecture
-  flutter_bloc: ^7.3.1
-  bloc: ^7.2.1
-  flutter_hooks: ^0.18.0
-  get_it: ^7.2.0
   auto_route: ^3.0.4
-  
-  #general
-  intl: ^0.17.0
-  json_annotation: ^4.3.0
-  uuid: ^3.0.4
-  freezed_annotation: ^0.15.0
-  injectable: ^1.5.0
-
-
-  # firebase dependencies
-  firebase_auth: ^3.1.4
-  firebase_core: ^1.8.0
-  google_sign_in: ^5.2.1
+  bloc: ^8.0.0-dev.5
+  bloc_concurrency: ^0.2.0-dev.2
   cloud_firestore: ^2.5.4
-
-
-  #functional dart
-  # fpdart: ^0.0.12
   dartz: ^0.10.0
-  kt_dart: ^0.10.0
-  hydrated_bloc: ^7.1.0
-
-  #UI/UX
   designsys:
     path: C:\Users\kelvi\Desktop\zawadi\designsys
-    # git: https://github.com/kzawadi/zawadiCore.git
-  form_field_validator: ^1.1.0  #todo remove
+  firebase_auth: ^3.1.4
+  firebase_core: ^1.8.0
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.0.0-dev.3
+  flutter_hooks: ^0.18.0
+  flutter_localizations:
+    sdk: flutter
+  form_field_validator: ^1.1.0
+  freezed_annotation: ^0.15.0
+  get_it: ^7.2.0
+  google_sign_in: ^5.2.1
+  hydrated_bloc: ^8.0.0-dev.5
+  injectable: ^1.5.0
+  intl: ^0.17.0
+  json_annotation: ^4.3.0
+  kt_dart: ^0.10.0
+  uuid: ^3.0.4
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
   
   auto_route_generator: ^3.0.1
-  bloc_test: ^8.4.0
+  bloc_test: ^9.0.0-dev.5
   build_runner: ^2.1.4
+  flutter_native_splash: ^1.3.1
+  flutter_test:
+    sdk: flutter
   freezed: ^0.15.0+1
   injectable_generator: ^1.5.2
   json_serializable: ^6.0.1
+  lint: ^1.7.2
   mocktail: ^0.2.0
   very_good_analysis: ^2.4.0
-  lint: ^1.7.2
-  flutter_native_splash: ^1.3.1
-
 
 flutter:
-
 
   # To add assets to your application, add an assets section, like this:
   assets:
@@ -72,8 +57,5 @@ flutter:
     - assets/images/auth/
     - assets/fonts/
 
-
-
   uses-material-design: true
   generate: true
-

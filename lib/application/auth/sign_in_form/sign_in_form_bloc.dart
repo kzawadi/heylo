@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -20,13 +21,13 @@ part 'sign_in_form_state.dart';
 @injectable
 class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   SignInFormBloc(this._authFacade) : super(SignInFormState.initial()) {
-    on<SignInFormEvent>(_signInFormHandler);
+    on<SignInFormEvent>(_signInFormHandler, transformer: sequential());
   }
 
   final IAuthFacade _authFacade;
 
-  ///The Bloc logic heper/handler function
-  Future _signInFormHandler(
+  ///The Bloc logic helper/events handler function
+  FutureOr<void> _signInFormHandler(
     SignInFormEvent event,
     Emitter emit,
   ) async {
@@ -80,7 +81,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
 
   ///This function take [EmailAddress] and [Password] and make a network call
   ///to either register or login an account
-  Future _performActionOnAuthFacadeWithEmailAndPassword(
+  FutureOr<void> _performActionOnAuthFacadeWithEmailAndPassword(
     Future<Either<AuthFailure, Unit>> Function({
       required EmailAddress emailAddress,
       required Password password,

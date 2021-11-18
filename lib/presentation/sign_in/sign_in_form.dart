@@ -5,8 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zawadi/application/auth/auth_bloc.dart';
 import 'package:zawadi/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:zawadi/presentation/routes/router.gr.dart';
-
-import 'package:zawadi/presentation/sign_in/forgot_password_page.dart';
 import 'package:zawadi/presentation/sign_in/widgets/fields/my_password_field.dart';
 import 'package:zawadi/presentation/sign_in/widgets/fields/my_text_form_field.dart';
 import 'package:zawadi/presentation/splash/app_styles.dart';
