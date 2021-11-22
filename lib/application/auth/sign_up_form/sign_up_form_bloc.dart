@@ -7,8 +7,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:zawadi/domain/auth/auth_failure.dart';
-import 'package:zawadi/domain/auth/i_auth_facade.dart';
+import 'package:zawadi/domain/auth/use_cases/auth_use_cases.dart';
 import 'package:zawadi/domain/auth/value_objects.dart';
+import 'package:zawadi/domain/core/i_auth_use_cases.dart';
 
 part 'sign_up_form_bloc.freezed.dart';
 part 'sign_up_form_event.dart';
@@ -19,11 +20,19 @@ part 'sign_up_form_state.dart';
 ///it handles form validations and errors
 @injectable
 class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
-  SignUpFormBloc(this._authFacade) : super(SignUpFormState.initial()) {
+  SignUpFormBloc(
+    this._signInWithGoogleUseCase,
+    this._registerWithEmailAndPasswordUseCase,
+    this._signInWithEmailAndPasswordUseCase,
+  ) : super(SignUpFormState.initial()) {
     on<SignUpFormEvent>(_signInFormHandler);
   }
 
-  final IAuthFacade _authFacade;
+  final SignInWithGoogleUseCase _signInWithGoogleUseCase;
+  final RegisterWithEmailAndPasswordUseCase
+      _registerWithEmailAndPasswordUseCase;
+
+  final SignInWithEmailAndPasswordUseCase _signInWithEmailAndPasswordUseCase;
 
   ///The Bloc logic heper/handler function
   Future _signInFormHandler(
@@ -49,13 +58,13 @@ class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
       },
       registerWithEmailAndPasswordPressed: (e) async {
         await _performActionOnAuthFacadeWithEmailAndPassword(
-          _authFacade.registerWithEmailAndPassword,
+          _registerWithEmailAndPasswordUseCase.call,
           emit,
         );
       },
       signInWithEmailAndPasswordPressed: (e) async {
         await _performActionOnAuthFacadeWithEmailAndPassword(
-          _authFacade.signInWithEmailAndPassword,
+          _signInWithEmailAndPasswordUseCase.call,
           emit,
         );
       },
@@ -67,7 +76,8 @@ class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
           ),
         );
 
-        final failureOrSuccess = await _authFacade.signInWithGoogle();
+        final failureOrSuccess =
+            await _signInWithGoogleUseCase.call(NoParams());
         emit(
           state.copyWith(
             isSubmitting: false,
