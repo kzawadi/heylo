@@ -7,27 +7,37 @@ environment:
   sdk: ">=2.14.0 <3.0.0"
 
 dependencies:
-  auto_route: ^3.0.4
+
+  #state management
   bloc: ^8.0.0-dev.5
-  bloc_concurrency: ^0.2.0-dev.2
+  flutter_bloc: ^8.0.0
+  hydrated_bloc: ^8.0.0
+  bloc_concurrency: ^0.2.0
+
+  ###################################################
+  auto_route: ^3.0.4
+
+  ###################################################
+  # firebase
   cloud_firestore: ^2.5.4
+  firebase_auth: ^3.1.4
+  firebase_core: ^1.8.0
+  google_sign_in: ^5.2.1
+  ###################################################
   dartz: ^0.10.0
   designsys:
     path: C:\Users\kelvi\Desktop\zawadi\designsys
   equatable: ^2.0.3
-  firebase_auth: ^3.1.4
-  firebase_core: ^1.8.0
+  
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.0.0-dev.3
   flutter_hooks: ^0.18.0
   flutter_localizations:
     sdk: flutter
   form_field_validator: ^1.1.0
   freezed_annotation: ^0.15.0
   get_it: ^7.2.0
-  google_sign_in: ^5.2.1
-  hydrated_bloc: ^8.0.0-dev.5
+  ##################################################
   injectable: ^1.5.0
   intl: ^0.17.0
   json_annotation: ^4.3.0
@@ -37,7 +47,7 @@ dependencies:
 
 dev_dependencies:
   auto_route_generator: ^3.0.1
-  bloc_test: ^9.0.0-dev.5
+  bloc_test: ^9.0.1
   build_runner: ^2.1.4
   flutter_native_splash: ^1.3.1
   flutter_test:
