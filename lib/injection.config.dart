@@ -49,8 +49,10 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       registerFor: {_prod});
   gh.factory<_i10.RegisterWithEmailAndPasswordUseCase>(
       () => _i10.RegisterWithEmailAndPasswordUseCase(get<_i8.IAuthFacade>()));
-  gh.factory<_i11.SignInFormBloc>(
-      () => _i11.SignInFormBloc(get<_i8.IAuthFacade>()));
+  gh.factory<_i11.SignInFormBloc>(() => _i11.SignInFormBloc(
+      get<_i4.RegisterWithEmailAndPasswordUseCase>(),
+      get<_i4.SignInWithEmailAndPasswordUseCase>(),
+      get<_i4.SignInWithGoogleUseCase>()));
   gh.factory<_i12.SignInWithEmailAndPasswordUseCase>(
       () => _i12.SignInWithEmailAndPasswordUseCase(get<_i8.IAuthFacade>()));
   gh.factory<_i13.SignInWithGoogleUseCase>(

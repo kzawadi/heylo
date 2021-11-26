@@ -8,8 +8,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:zawadi/domain/auth/auth_failure.dart';
-import 'package:zawadi/domain/auth/i_auth_facade.dart';
+import 'package:zawadi/domain/auth/use_cases/auth_use_cases.dart';
 import 'package:zawadi/domain/auth/value_objects.dart';
+import 'package:zawadi/domain/core/i_auth_use_cases.dart';
 
 part 'sign_in_form_bloc.freezed.dart';
 part 'sign_in_form_event.dart';
@@ -20,11 +21,16 @@ part 'sign_in_form_state.dart';
 ///it handles form validations and errors
 @injectable
 class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
-  SignInFormBloc(this._authFacade) : super(SignInFormState.initial()) {
+  SignInFormBloc(this._registerWithEmailAndPasswordUseCase,
+      this._signInWithEmailAndPasswordUseCase, this._signInWithGoogleUseCase)
+      : super(SignInFormState.initial()) {
     on<SignInFormEvent>(_signInFormHandler, transformer: sequential());
   }
 
-  final IAuthFacade _authFacade;
+  final RegisterWithEmailAndPasswordUseCase
+      _registerWithEmailAndPasswordUseCase;
+  final SignInWithEmailAndPasswordUseCase _signInWithEmailAndPasswordUseCase;
+  final SignInWithGoogleUseCase _signInWithGoogleUseCase;
 
   ///The Bloc logic helper/events handler function
   FutureOr<void> _signInFormHandler(
@@ -50,13 +56,13 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       },
       registerWithEmailAndPasswordPressed: (e) async {
         await _performActionOnAuthFacadeWithEmailAndPassword(
-          _authFacade.registerWithEmailAndPassword,
+          _registerWithEmailAndPasswordUseCase,
           emit,
         );
       },
       signInWithEmailAndPasswordPressed: (e) async {
         await _performActionOnAuthFacadeWithEmailAndPassword(
-          _authFacade.signInWithEmailAndPassword,
+          _signInWithEmailAndPasswordUseCase,
           emit,
         );
       },
@@ -68,7 +74,8 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
           ),
         );
 
-        final failureOrSuccess = await _authFacade.signInWithGoogle();
+        final failureOrSuccess =
+            await _signInWithGoogleUseCase.call(NoParams());
         emit(
           state.copyWith(
             isSubmitting: false,
