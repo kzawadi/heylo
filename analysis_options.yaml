@@ -26,6 +26,7 @@ analyzer:
     - lib/**.config.dart
     - lib/**.gr.dart
     - test/**.mocks.dart
+    - test/**.config.dart
 
     
 

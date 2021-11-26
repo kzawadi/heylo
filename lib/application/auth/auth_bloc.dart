@@ -15,7 +15,8 @@ part 'auth_state.dart';
 part 'auth_bloc.freezed.dart';
 
 ///This bloc handle all event and state of the apps user authentication journey
-@injectable
+// @injectable
+@LazySingleton(env: [Environment.prod, Environment.test])
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(
     this._getSignedInUserUseCase,

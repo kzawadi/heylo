@@ -30,21 +30,21 @@ class AppBlocObserver extends BlocObserver {
 }
 
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
-  await BlocOverrides.runZoned(
+  FlutterError.onError = (details) {
+    log(details.exceptionAsString(), stackTrace: details.stack);
+  };
+  await runZonedGuarded(
     () async {
-      FlutterError.onError = (details) {
-        log(details.exceptionAsString(), stackTrace: details.stack);
-      };
       WidgetsFlutterBinding.ensureInitialized();
       configureInjection(Environment.prod);
       await Firebase.initializeApp();
 
-      await runZonedGuarded(
+      await BlocOverrides.runZoned(
         () async => runApp(await builder()),
-        (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
+        blocObserver: AppBlocObserver(),
+        eventTransformer: sequential<dynamic>(),
       );
     },
-    blocObserver: AppBlocObserver(),
-    eventTransformer: sequential<dynamic>(),
+    (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
-}
+}//todo test after changing this 

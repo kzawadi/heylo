@@ -8,7 +8,7 @@ import 'package:zawadi/domain/auth/user.dart';
 import 'package:zawadi/domain/auth/value_objects.dart';
 import 'package:zawadi/infrastructure/auth/firebase_user_mapper.dart';
 
-@LazySingleton(as: IAuthFacade)
+@LazySingleton(as: IAuthFacade, env: [Environment.prod])
 class FirebaseAuthFacade implements IAuthFacade {
   FirebaseAuthFacade(
     this._firebaseAuth,
