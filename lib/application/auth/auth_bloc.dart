@@ -44,7 +44,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           ),
         );
       },
-      signedOut: (e) => _signOutUseCase.call(NoParams()),
+      signedOut: (e) async {
+        final signOutResponse = await _signOutUseCase.call(NoParams());
+        emit(
+          signOutResponse.fold(
+            (l) =>
+                const AuthState.unAuthenticatingFailure(), //todo handle failure
+            (_) => const AuthState.unauthenticated(),
+          ),
+        );
+      },
     );
   }
 }

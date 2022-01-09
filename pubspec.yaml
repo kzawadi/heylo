@@ -26,7 +26,7 @@ dependencies:
   ###################################################
   dartz: ^0.10.0
   designsys:
-    path: C:\Users\kelvi\Desktop\zawadi\designsys
+    path: C:/Users/kelvi/Desktop/zawadi/designsys
   equatable: ^2.0.3
   
   flutter:
