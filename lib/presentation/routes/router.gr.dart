@@ -7,6 +7,8 @@
 // **************************************************************************
 // AutoRouteGenerator
 // **************************************************************************
+//
+// ignore_for_file: type=lint
 
 import 'package:auto_route/auto_route.dart' as _i7;
 import 'package:flutter/material.dart' as _i8;
@@ -62,44 +64,52 @@ class Router extends _i7.RootStackRouter {
       ];
 }
 
-/// generated route for [_i1.SplashPage]
+/// generated route for
+/// [_i1.SplashPage]
 class SplashPageRoute extends _i7.PageRouteInfo<void> {
-  const SplashPageRoute() : super(name, path: '/splash-page');
+  const SplashPageRoute() : super(SplashPageRoute.name, path: '/splash-page');
 
   static const String name = 'SplashPageRoute';
 }
 
-/// generated route for [_i2.SplashPage2]
+/// generated route for
+/// [_i2.SplashPage2]
 class SplashPage2Route extends _i7.PageRouteInfo<void> {
-  const SplashPage2Route() : super(name, path: '/splash-page2');
+  const SplashPage2Route()
+      : super(SplashPage2Route.name, path: '/splash-page2');
 
   static const String name = 'SplashPage2Route';
 }
 
-/// generated route for [_i3.SignInPage]
+/// generated route for
+/// [_i3.SignInPage]
 class SignInPageRoute extends _i7.PageRouteInfo<void> {
-  const SignInPageRoute() : super(name, path: '/sign-in-page');
+  const SignInPageRoute() : super(SignInPageRoute.name, path: '/sign-in-page');
 
   static const String name = 'SignInPageRoute';
 }
 
-/// generated route for [_i4.SignUpPage]
+/// generated route for
+/// [_i4.SignUpPage]
 class SignUpPageRoute extends _i7.PageRouteInfo<void> {
-  const SignUpPageRoute() : super(name, path: '/sign-up-page');
+  const SignUpPageRoute() : super(SignUpPageRoute.name, path: '/sign-up-page');
 
   static const String name = 'SignUpPageRoute';
 }
 
-/// generated route for [_i5.ForgotPasswordPage]
+/// generated route for
+/// [_i5.ForgotPasswordPage]
 class ForgotPasswordPageRoute extends _i7.PageRouteInfo<void> {
-  const ForgotPasswordPageRoute() : super(name, path: '/forgot-password-page');
+  const ForgotPasswordPageRoute()
+      : super(ForgotPasswordPageRoute.name, path: '/forgot-password-page');
 
   static const String name = 'ForgotPasswordPageRoute';
 }
 
-/// generated route for [_i6.OnBoardingPage]
+/// generated route for
+/// [_i6.OnBoardingPage]
 class OnBoardingPageRoute extends _i7.PageRouteInfo<void> {
-  const OnBoardingPageRoute() : super(name, path: '/');
+  const OnBoardingPageRoute() : super(OnBoardingPageRoute.name, path: '/');
 
   static const String name = 'OnBoardingPageRoute';
 }
