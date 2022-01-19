@@ -16,7 +16,7 @@ import 'package:flutter/material.dart' as _i8;
 import '../sign_in/forgot_password_page.dart' as _i5;
 import '../sign_in/sign_in_page.dart' as _i3;
 import '../sign_in/sign_up_page.dart' as _i4;
-import '../splash/onboarding_page.dart' as _i6;
+import '../splash/on_boarding/main.dart' as _i6;
 import '../splash/splash_page.dart' as _i1;
 import '../splash/splash_page2.dart' as _i2;
 
@@ -46,9 +46,9 @@ class Router extends _i7.RootStackRouter {
       return _i7.CupertinoPageX<dynamic>(
           routeData: routeData, child: const _i5.ForgotPasswordPage());
     },
-    OnBoardingPageRoute.name: (routeData) {
+    OnBoardingRoute.name: (routeData) {
       return _i7.CupertinoPageX<dynamic>(
-          routeData: routeData, child: const _i6.OnBoardingPage());
+          routeData: routeData, child: _i6.OnBoarding());
     }
   };
 
@@ -60,7 +60,7 @@ class Router extends _i7.RootStackRouter {
         _i7.RouteConfig(SignUpPageRoute.name, path: '/sign-up-page'),
         _i7.RouteConfig(ForgotPasswordPageRoute.name,
             path: '/forgot-password-page'),
-        _i7.RouteConfig(OnBoardingPageRoute.name, path: '/')
+        _i7.RouteConfig(OnBoardingRoute.name, path: '/')
       ];
 }
 
@@ -107,9 +107,9 @@ class ForgotPasswordPageRoute extends _i7.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i6.OnBoardingPage]
-class OnBoardingPageRoute extends _i7.PageRouteInfo<void> {
-  const OnBoardingPageRoute() : super(OnBoardingPageRoute.name, path: '/');
+/// [_i6.OnBoarding]
+class OnBoardingRoute extends _i7.PageRouteInfo<void> {
+  const OnBoardingRoute() : super(OnBoardingRoute.name, path: '/');
 
-  static const String name = 'OnBoardingPageRoute';
+  static const String name = 'OnBoardingRoute';
 }

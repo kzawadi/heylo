@@ -7,43 +7,37 @@ environment:
   sdk: ">=2.14.0 <3.0.0"
 
 dependencies:
-
-  #state management
-  bloc: ^8.0.2
-  flutter_bloc: ^8.0.1
-  hydrated_bloc: ^8.0.0
-  bloc_concurrency: ^0.2.0
-
-  ###################################################
   auto_route: ^3.2.1
-
-  ###################################################
-  # firebase
+  bloc: ^8.0.2
+  bloc_concurrency: ^0.2.0
   cloud_firestore: ^3.1.6
-  firebase_auth: ^3.1.4
-  firebase_core: ^1.8.0
-  google_sign_in: ^5.2.1
-  ###################################################
   dartz: ^0.10.0
   designsys:
     path: C:/Users/kelvi/Desktop/zawadi/designsys
   equatable: ^2.0.3
-  
+  firebase_auth: ^3.1.4
+  firebase_core: ^1.8.0
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.0.1
   flutter_hooks: ^0.18.0
   flutter_localizations:
     sdk: flutter
   form_field_validator: ^1.1.0
   freezed_annotation: ^1.1.0
   get_it: ^7.2.0
-  ##################################################
+  google_sign_in: ^5.2.1
+  hydrated_bloc: ^8.0.0
   injectable: ^1.5.0
   intl: ^0.17.0
   json_annotation: ^4.3.0
   kt_dart: ^0.10.0
   mockito: ^5.0.16
   uuid: ^3.0.4
+  vector_math: ^2.1.1
+
+  # shared:
+  #     path: _shared
 
 dev_dependencies:
   auto_route_generator: ^3.0.1
@@ -66,7 +60,12 @@ flutter:
     - assets/
     - assets/images/
     - assets/images/auth/
+    - assets/on_boarding/images/
+    - assets/on_boarding/assets/
     - assets/fonts/
+    - assets/on_boarding/assets/torus.obj
+    - assets/on_boarding/assets/cube.obj
+    - assets/on_boarding/assets/star.obj
 
   uses-material-design: true
   generate: true
