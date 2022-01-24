@@ -505,7 +505,7 @@ class MeshCustomPainter extends CustomPainter {
 }
 
 bool _compareDepth(
-    List<vec32.Vector4> positions, List<int> src, int indexA, int indexB) {
+    List<vec32.Vector4> positions, List<int> src, int indexA, int indexB,) {
   double depthA, depthB;
   {
     final a = positions[src[indexA * 3 + 0]];
