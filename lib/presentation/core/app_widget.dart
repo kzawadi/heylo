@@ -36,8 +36,8 @@ class AppWidget extends StatelessWidget {
         home: MaterialApp.router(
           routeInformationParser: _appRouter.defaultRouteParser(),
           routerDelegate: _appRouter.delegate(
-            // initialRoutes: [const app_router.OnBoardingPageRoute()],
-          ),
+              // initialRoutes: [const app_router.OnBoardingPageRoute()],
+              ),
           debugShowCheckedModeBanner: false,
           theme: ThemeData.light().copyWith(
             primaryColor: Colors.green[800],

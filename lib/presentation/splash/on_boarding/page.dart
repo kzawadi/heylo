@@ -9,10 +9,7 @@ import 'package:zawadi/shared/on_boarding/blend_mask.dart';
 // import './indie_3d_model_controller.dart';
 // import 'main.dart';
 
-
 class Indie3dPage extends StatelessWidget {
-
-
   const Indie3dPage({
     this.topTitle = '',
     this.bottomTitle = '',
@@ -25,7 +22,7 @@ class Indie3dPage extends StatelessWidget {
     this.bottomTitleScale = 1.0,
     this.backgroundShapeOpacity = 0.85,
     Key? key,
-  }):super(key: key);
+  }) : super(key: key);
 
   final String topTitle;
   final String bottomTitle;
@@ -43,27 +40,29 @@ class Indie3dPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appSize = MediaQuery.of(context).size;
-    final textScale = appSize.aspectRatio > 1? 1.15 : .8;
+    final textScale = appSize.aspectRatio > 1 ? 1.15 : .8;
     return Container(
       color: backgroundColor,
       child: Stack(
         children: [
-          if (controller.initialized) ... {
+          if (controller.initialized) ...{
             BlendMask(
               blendMode: BlendMode.hardLight,
               opacity: backgroundShapeOpacity,
-              child: Indie3dModel(controller: controller, pageIndex: pageIndex * 2 + 0),
+              child: Indie3dModel(
+                  controller: controller, pageIndex: pageIndex * 2 + 0),
             ),
             Align(
               alignment: Alignment.bottomCenter,
               child: SizedBox(
-                height: appSize.height * (appSize.aspectRatio > 1? 1 : .80),
+                height: appSize.height * (appSize.aspectRatio > 1 ? 1 : .80),
                 child: Image(fit: BoxFit.fitHeight, image: image!),
               ),
             ),
             BlendMask(
               blendMode: BlendMode.exclusion,
-              child: Indie3dModel(controller: controller, pageIndex: pageIndex * 2 + 1),
+              child: Indie3dModel(
+                  controller: controller, pageIndex: pageIndex * 2 + 1),
             ),
             Align(
               alignment: Alignment.topRight,
@@ -75,8 +74,10 @@ class Indie3dPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     // mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      _buildClippedText(topTitle, topTitleClipProgress, 72 * textScale, 0, 6, 1),
-                      _buildClippedText(bottomTitle, bottomTitleClipProgress, 120 * textScale * bottomTitleScale, -10, 8, .9),
+                      _buildClippedText(topTitle, topTitleClipProgress,
+                          72 * textScale, 0, 6, 1),
+                      _buildClippedText(bottomTitle, bottomTitleClipProgress,
+                          120 * textScale * bottomTitleScale, -10, 8, .9),
                     ],
                   ),
                 ),
@@ -88,10 +89,12 @@ class Indie3dPage extends StatelessWidget {
               child: Image(
                 width: appSize.width,
                 fit: BoxFit.none,
-                image: const AssetImage(AppAssets.noise,),
+                image: const AssetImage(
+                  AppAssets.noise,
+                ),
               ),
             ),
-          } else ... {
+          } else ...{
             const Center(
               child: Text(
                 'Loading assets...',
@@ -110,7 +113,7 @@ class Indie3dPage extends StatelessWidget {
             child: Container(
               height: 200,
               decoration: const BoxDecoration(
-                gradient:  LinearGradient(
+                gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [Color(0x00000000), Color(0x99000000)],
@@ -123,7 +126,8 @@ class Indie3dPage extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(bottom: 60),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
                 color: Colors.white,
                 child: const Text(
                   'EXPLORE NOW',
@@ -143,7 +147,8 @@ class Indie3dPage extends StatelessWidget {
     );
   }
 
-  ClipRect _buildClippedText(String text, double progress, double fontSize, double yOffset, double spacing, double height) {
+  ClipRect _buildClippedText(String text, double progress, double fontSize,
+      double yOffset, double spacing, double height) {
     return ClipRect(
       clipper: _Indie3dTextClipper(height: progress * fontSize, y: yOffset),
       child: Text(
@@ -163,13 +168,9 @@ class Indie3dPage extends StatelessWidget {
   }
 }
 
-
-
 class _Indie3dTextClipper extends CustomClipper<Rect> {
-
-
   _Indie3dTextClipper({this.y = 0, this.height = 0});
-  
+
   final double y;
   final double height;
 

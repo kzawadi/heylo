@@ -1,12 +1,19 @@
-
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 // Applies a BlendMode to its child.
 class BlendMask extends SingleChildRenderObjectWidget {
-
-  const BlendMask({required BlendMode blendMode, double opacity = 1.0, Key? key, Widget? child, })
-      : _blendMode = blendMode, _opacity = opacity, super(key: key, child: child,);
+  const BlendMask({
+    required BlendMode blendMode,
+    double opacity = 1.0,
+    Key? key,
+    Widget? child,
+  })  : _blendMode = blendMode,
+        _opacity = opacity,
+        super(
+          key: key,
+          child: child,
+        );
 
   final BlendMode _blendMode;
   final double _opacity;
@@ -24,11 +31,9 @@ class BlendMask extends SingleChildRenderObjectWidget {
 }
 
 class RenderBlendMask extends RenderProxyBox {
-
-
-
   RenderBlendMask(BlendMode blendMode, double opacity)
-      : _blendMode = blendMode, _opacity = opacity;
+      : _blendMode = blendMode,
+        _opacity = opacity;
 
   BlendMode _blendMode;
   double _opacity;
@@ -36,7 +41,11 @@ class RenderBlendMask extends RenderProxyBox {
   @override
   void paint(PaintingContext context, Offset offset) {
     // Create a new layer and specify the blend mode and opacity to composite it with:
-    context.canvas.saveLayer(offset & size, Paint()..blendMode=_blendMode..color=Color.fromARGB((_opacity * 255).round(), 255, 255, 255));
+    context.canvas.saveLayer(
+        offset & size,
+        Paint()
+          ..blendMode = _blendMode
+          ..color = Color.fromARGB((_opacity * 255).round(), 255, 255, 255));
 
     super.paint(context, offset);
 

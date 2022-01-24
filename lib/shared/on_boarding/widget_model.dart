@@ -24,8 +24,7 @@ class OBJLoaderFace {
       : _positions = List<vec32.Vector3>.filled(3, vec32.Vector3.zero()),
         _normals = List<vec32.Vector3>.filled(3, vec32.Vector3.zero()),
         _uvs = List<vec32.Vector2>.filled(3, vec32.Vector2.zero()),
-        materialName='';
-        
+        materialName = '';
 
   List<vec32.Vector3> get positions => _positions;
   List<vec32.Vector3> get normals => _normals!;
@@ -73,7 +72,7 @@ class OBJLoader {
     var normals = <vec32.Vector3>[];
     var uvs = <vec32.Vector2>[];
     String currentMaterialName;
-      // final face = OBJLoaderFace();
+    // final face = OBJLoaderFace();
 
     final objLines = _objSource.split('\n');
     for (var line in objLines) {
@@ -239,14 +238,15 @@ class OBJLoader {
       uvs[i * 6 + 5] = _faces[i].uvs[2].y;
 
       print('IS THIS VALUE REALY NULL');
-      print(_materials[_faces[i].materialName]?.diffuseColor?.value??4278309437);
+      print(_materials[_faces[i].materialName]?.diffuseColor?.value ??
+          4278309437);
 
       colors[i * 3 + 0] =
-          _materials[_faces[i].materialName]?.diffuseColor?.value ??4278309437;
+          _materials[_faces[i].materialName]?.diffuseColor?.value ?? 4278309437;
       colors[i * 3 + 1] =
-          _materials[_faces[i].materialName]?.diffuseColor?.value ??4278309437;
+          _materials[_faces[i].materialName]?.diffuseColor?.value ?? 4278309437;
       colors[i * 3 + 2] =
-          _materials[_faces[i].materialName]?.diffuseColor?.value ??4278309437;
+          _materials[_faces[i].materialName]?.diffuseColor?.value ?? 4278309437;
 
       indices[i * 3 + 0] = i * 3 + 0;
       indices[i * 3 + 1] = i * 3 + 1;
@@ -314,25 +314,27 @@ class VertexMesh {
       var z2 = positions![indices![i + 2] * 3 + 2];
 
       // ignore: prefer_interpolation_to_compose_strings
-      print('f: {' +
-          x0.toStringAsFixed(3) +
-          ', ' +
-          y0.toStringAsFixed(3) +
-          ', ' +
-          z0.toStringAsFixed(3) +
-          '}, {' +
-          x1.toStringAsFixed(3) +
-          ', ' +
-          y1.toStringAsFixed(3) +
-          ', ' +
-          z1.toStringAsFixed(3) +
-          '}, {' +
-          x2.toStringAsFixed(3) +
-          ', ' +
-          y2.toStringAsFixed(3) +
-          ', ' +
-          z2.toStringAsFixed(3) +
-          '}',);
+      print(
+        'f: {' +
+            x0.toStringAsFixed(3) +
+            ', ' +
+            y0.toStringAsFixed(3) +
+            ', ' +
+            z0.toStringAsFixed(3) +
+            '}, {' +
+            x1.toStringAsFixed(3) +
+            ', ' +
+            y1.toStringAsFixed(3) +
+            ', ' +
+            z1.toStringAsFixed(3) +
+            '}, {' +
+            x2.toStringAsFixed(3) +
+            ', ' +
+            y2.toStringAsFixed(3) +
+            ', ' +
+            z2.toStringAsFixed(3) +
+            '}',
+      );
     }
   }
 }
@@ -505,7 +507,11 @@ class MeshCustomPainter extends CustomPainter {
 }
 
 bool _compareDepth(
-    List<vec32.Vector4> positions, List<int> src, int indexA, int indexB,) {
+  List<vec32.Vector4> positions,
+  List<int> src,
+  int indexA,
+  int indexB,
+) {
   double depthA, depthB;
   {
     final a = positions[src[indexA * 3 + 0]];

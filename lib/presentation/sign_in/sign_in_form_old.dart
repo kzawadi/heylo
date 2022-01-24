@@ -24,7 +24,7 @@
 //                 behavior: SnackBarBehavior.floating,
 //                 content: Text(
 //                   failure.map(
-//                     cancelledByUser: (_) => 'You have Cancelled 
+//                     cancelledByUser: (_) => 'You have Cancelled
 //the login in',
 //                     serverError: (_) => 'Server error',
 //                     emailAlreadyInUse: (_) => 'Email already in use',

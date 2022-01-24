@@ -47,4 +47,4 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
     },
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
-}//todo test after changing this 
+} //todo test after changing this

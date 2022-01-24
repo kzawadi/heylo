@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Indie3dNavigationIndicator extends StatelessWidget {
-
   final int pageIndex;
 
-  Indie3dNavigationIndicator({ this.pageIndex = 0 });
+  Indie3dNavigationIndicator({this.pageIndex = 0});
 
   @override
   Widget build(context) {
@@ -37,4 +36,3 @@ class Indie3dNavigationIndicator extends StatelessWidget {
     );
   }
 }
-

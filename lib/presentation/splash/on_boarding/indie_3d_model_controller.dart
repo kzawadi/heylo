@@ -31,7 +31,7 @@ class Indie3dModelController extends ChangeNotifier {
   double _targetCameraOffset = 0.0;
   Ticker? _ticker;
 
- Future<void> init(BuildContext context) async {
+  Future<void> init(BuildContext context) async {
     final appSize = MediaQuery.of(context).size;
     _setCamera(0.0);
     setView(appSize);
@@ -100,10 +100,13 @@ class Indie3dModelController extends ChangeNotifier {
     // await Future.wait([loadVertexMeshFromOBJAsset(context, AppAssets.basePath, 'torus.obj').then((value) => _meshTorus=value,),
     // loadVertexMeshFromOBJAsset(context,AppAssets.basePath,'star.obj',).then((value) => _meshStar = value),
     // loadVertexMeshFromOBJAsset(context,AppAssets.basePath,'cube.obj',).then((value) => _meshCube =value),
-    
+
     // ],);
     _meshTorus = await loadVertexMeshFromOBJAsset(
-        context, AppAssets.basePath, 'torus.obj',);
+      context,
+      AppAssets.basePath,
+      'torus.obj',
+    );
     _meshStar = await loadVertexMeshFromOBJAsset(
       context,
       AppAssets.basePath,

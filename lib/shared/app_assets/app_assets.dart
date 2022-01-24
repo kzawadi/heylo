@@ -8,5 +8,4 @@ class AppAssets {
   static const String star = 'assets/on_boarding/assets/star.obj';
   static const String torus = 'assets/on_boarding/assets/torus.obj';
   static const String basePath = 'assets/on_boarding/assets';
-
 }

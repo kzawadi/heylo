@@ -15,7 +15,8 @@ class IndieAppBar extends StatelessWidget {
         ),
         Container(
           color: const Color(0xFF010101),
-          padding: const EdgeInsets.only(top: 8, bottom: 8, left: 50, right: 16),
+          padding:
+              const EdgeInsets.only(top: 8, bottom: 8, left: 50, right: 16),
           child: Text(
             'FRESH BEATS BY',
             textAlign: TextAlign.right,
