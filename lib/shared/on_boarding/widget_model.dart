@@ -82,13 +82,23 @@ class OBJLoader {
       if (line.startsWith('v ')) {
         final args = line.split(' ');
         // args[0] = 'v' args[1..3] = position coords
-        positions.add(vec32.Vector3(double.parse(args[1]),
-            double.parse(args[2]), double.parse(args[3]),),);
+        positions.add(
+          vec32.Vector3(
+            double.parse(args[1]),
+            double.parse(args[2]),
+            double.parse(args[3]),
+          ),
+        );
       } else if (line.startsWith('vn ')) {
         final args = line.split(' ');
         // args[0] = 'vn' args[1..3] = normal coords
-        normals.add(vec32.Vector3(double.parse(args[1]), double.parse(args[2]),
-            double.parse(args[3]),),);
+        normals.add(
+          vec32.Vector3(
+            double.parse(args[1]),
+            double.parse(args[2]),
+            double.parse(args[3]),
+          ),
+        );
       } else if (line.startsWith('vt ')) {
         final args = line.split(' ');
         // args[0] = 'vt' args[1..2] = texture coords
@@ -156,10 +166,11 @@ class OBJLoader {
         if (currentMaterial != null) {
           final args = line.split(' ');
           currentMaterial.diffuseColor = Color.fromARGB(
-              255,
-              (double.parse(args[1]) * 255).round(),
-              (double.parse(args[2]) * 255).round(),
-              (double.parse(args[3]) * 255).round(),);
+            255,
+            (double.parse(args[1]) * 255).round(),
+            (double.parse(args[2]) * 255).round(),
+            (double.parse(args[3]) * 255).round(),
+          );
         }
       } else if (line.startsWith('map_Kd ')) {
         if (currentMaterial != null) {
@@ -237,7 +248,6 @@ class OBJLoader {
       uvs[i * 6 + 4] = _faces[i].uvs[2].x;
       uvs[i * 6 + 5] = _faces[i].uvs[2].y;
 
-
       colors[i * 3 + 0] =
           _materials[_faces[i].materialName]?.diffuseColor?.value ?? 4278309437;
       colors[i * 3 + 1] =
@@ -310,29 +320,29 @@ class VertexMesh {
   //     var y2 = positions![indices![i + 2] * 3 + 1];
   //     var z2 = positions![indices![i + 2] * 3 + 2];
 
-      // ignore: prefer_interpolation_to_compose_strings
-      // print(
-      //   'f: {' +
-      //       x0.toStringAsFixed(3) +
-      //       ', ' +
-      //       y0.toStringAsFixed(3) +
-      //       ', ' +
-      //       z0.toStringAsFixed(3) +
-      //       '}, {' +
-      //       x1.toStringAsFixed(3) +
-      //       ', ' +
-      //       y1.toStringAsFixed(3) +
-      //       ', ' +
-      //       z1.toStringAsFixed(3) +
-      //       '}, {' +
-      //       x2.toStringAsFixed(3) +
-      //       ', ' +
-      //       y2.toStringAsFixed(3) +
-      //       ', ' +
-      //       z2.toStringAsFixed(3) +
-      //       '}',
-      // );
-    // }
+  // ignore: prefer_interpolation_to_compose_strings
+  // print(
+  //   'f: {' +
+  //       x0.toStringAsFixed(3) +
+  //       ', ' +
+  //       y0.toStringAsFixed(3) +
+  //       ', ' +
+  //       z0.toStringAsFixed(3) +
+  //       '}, {' +
+  //       x1.toStringAsFixed(3) +
+  //       ', ' +
+  //       y1.toStringAsFixed(3) +
+  //       ', ' +
+  //       z1.toStringAsFixed(3) +
+  //       '}, {' +
+  //       x2.toStringAsFixed(3) +
+  //       ', ' +
+  //       y2.toStringAsFixed(3) +
+  //       ', ' +
+  //       z2.toStringAsFixed(3) +
+  //       '}',
+  // );
+  // }
   // }
 }
 

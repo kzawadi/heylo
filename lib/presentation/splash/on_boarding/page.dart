@@ -50,7 +50,9 @@ class Indie3dPage extends StatelessWidget {
               blendMode: BlendMode.hardLight,
               opacity: backgroundShapeOpacity,
               child: Indie3dModel(
-                  controller: controller, pageIndex: pageIndex * 2 + 0,),
+                controller: controller,
+                pageIndex: pageIndex * 2 + 0,
+              ),
             ),
             Align(
               alignment: Alignment.bottomCenter,
@@ -62,7 +64,9 @@ class Indie3dPage extends StatelessWidget {
             BlendMask(
               blendMode: BlendMode.exclusion,
               child: Indie3dModel(
-                  controller: controller, pageIndex: pageIndex * 2 + 1,),
+                controller: controller,
+                pageIndex: pageIndex * 2 + 1,
+              ),
             ),
             Align(
               alignment: Alignment.topRight,
@@ -74,10 +78,22 @@ class Indie3dPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     // mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      _buildClippedText(topTitle, topTitleClipProgress,
-                          72 * textScale, 0, 6, 1,),
-                      _buildClippedText(bottomTitle, bottomTitleClipProgress,
-                          120 * textScale * bottomTitleScale, -10, 8, .9,),
+                      _buildClippedText(
+                        topTitle,
+                        topTitleClipProgress,
+                        72 * textScale,
+                        0,
+                        6,
+                        1,
+                      ),
+                      _buildClippedText(
+                        bottomTitle,
+                        bottomTitleClipProgress,
+                        120 * textScale * bottomTitleScale,
+                        -10,
+                        8,
+                        .9,
+                      ),
                     ],
                   ),
                 ),
@@ -147,8 +163,14 @@ class Indie3dPage extends StatelessWidget {
     );
   }
 
-  ClipRect _buildClippedText(String text, double progress, double fontSize,
-      double yOffset, double spacing, double height,) {
+  ClipRect _buildClippedText(
+    String text,
+    double progress,
+    double fontSize,
+    double yOffset,
+    double spacing,
+    double height,
+  ) {
     return ClipRect(
       clipper: _Indie3dTextClipper(height: progress * fontSize, y: yOffset),
       child: Text(

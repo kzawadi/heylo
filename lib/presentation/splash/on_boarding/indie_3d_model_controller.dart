@@ -55,29 +55,40 @@ class Indie3dModelController extends ChangeNotifier {
     // Calculate world space (0, 0, 0) in ndc space
     double cameraZ = 0;
     {
-      final camNDC = matProj!
-          .multiplied(matView!)
-          .transform(vec32.Vector4(0, 0, -2, 1,),);
+      final camNDC = matProj!.multiplied(matView!).transform(
+            vec32.Vector4(
+              0,
+              0,
+              -2,
+              1,
+            ),
+          );
       //todo a very sketch fix
       if (camNDC.w != 0.0) {
-        camNDC..x /= camNDC.w
-        ..y /= camNDC.w
-        ..z /= camNDC.w;
+        camNDC
+          ..x /= camNDC.w
+          ..y /= camNDC.w
+          ..z /= camNDC.w;
       }
       cameraZ = camNDC.z;
     }
 
     final appSize = MediaQuery.of(context).size;
-    final ndc = vec32.Vector4(position.dx / appSize.width * 2.0 - 1.0,
-        (position.dy / appSize.height * 2.0 - 1.0) * -1.0, cameraZ, 1,);
+    final ndc = vec32.Vector4(
+      position.dx / appSize.width * 2.0 - 1.0,
+      (position.dy / appSize.height * 2.0 - 1.0) * -1.0,
+      cameraZ,
+      1,
+    );
 
     final vec32.Matrix4 matrix =
         vec32.Matrix4.inverted(matProj!.multiplied(matView!));
     final vec32.Vector4 world = matrix.transform(ndc);
     if (world.w != 0.0) {
-      world..x /= world.w
-      ..y /= world.w
-      ..z /= world.w;
+      world
+        ..x /= world.w
+        ..y /= world.w
+        ..z /= world.w;
     }
     // print(world);
 
@@ -85,7 +96,13 @@ class Indie3dModelController extends ChangeNotifier {
     for (int i = page * 12; i < page * 12 + 12; ++i) {
       final force =
           _positions![i] - vec32.Vector3(world.x, world.y, _positions![i].z);
-      final tangentForce = force.cross(vec32.Vector3(0, 0, -1,),);
+      final tangentForce = force.cross(
+        vec32.Vector3(
+          0,
+          0,
+          -1,
+        ),
+      );
       _linearVelocities![i] +=
           force.normalized() * (8.0 / force.length).clamp(0.0, 24.0);
       _angularVelocities![i] += tangentForce.normalized() * 4.0;
@@ -94,11 +111,14 @@ class Indie3dModelController extends ChangeNotifier {
 
   void setView(Size size) {
     matProj = vec32.makePerspectiveMatrix(
-        math.pi / 2.0, size.width / size.height, 0.01, 100,);
+      math.pi / 2.0,
+      size.width / size.height,
+      0.01,
+      100,
+    );
   }
 
   Future<void> _loadMeshs(BuildContext context) async {
- 
     _meshTorus = await loadVertexMeshFromOBJAsset(
       context,
       AppAssets.basePath,
@@ -154,9 +174,10 @@ class Indie3dModelController extends ChangeNotifier {
 
     // Set initial values
     for (final p in _positions!) {
-      p..x = _rng!.nextDouble() * 8 - 4
-      ..y = _rng!.nextDouble() * 28 - 19
-      ..z = _rng!.nextDouble() * 4 - 4;
+      p
+        ..x = _rng!.nextDouble() * 8 - 4
+        ..y = _rng!.nextDouble() * 28 - 19
+        ..z = _rng!.nextDouble() * 4 - 4;
     }
     // Distribute better
     for (int i = 0; i < 200; ++i) {
@@ -169,8 +190,10 @@ class Indie3dModelController extends ChangeNotifier {
           if (dist < 5.0) {
             // Push both objects in a random direction
             final norm = vec32.Vector3(
-                    _rng!.nextDouble() * 2 - 1, _rng!.nextDouble() * 2 - 1, 0,)
-                .normalized();
+              _rng!.nextDouble() * 2 - 1,
+              _rng!.nextDouble() * 2 - 1,
+              0,
+            ).normalized();
 
             p0.add(-norm * 0.2);
             p1.add(norm * 0.2);
@@ -185,27 +208,31 @@ class Indie3dModelController extends ChangeNotifier {
 
     for (final quaternion in _rotations!) {
       quaternion.setAxisAngle(
-              vec32.Vector3(
-                _rng!.nextDouble() * 2.0 - 1.0,
-                _rng!.nextDouble() * 2.0 - 1.0,
-                _rng!.nextDouble() * 2.0 - 1.0,
-              ),
-              _rng!.nextDouble() * math.pi * 2.0,
-            );
+        vec32.Vector3(
+          _rng!.nextDouble() * 2.0 - 1.0,
+          _rng!.nextDouble() * 2.0 - 1.0,
+          _rng!.nextDouble() * 2.0 - 1.0,
+        ),
+        _rng!.nextDouble() * math.pi * 2.0,
+      );
     }
 
     for (final vel in _constantAngularVelocities!) {
-      vel..x = _rng!.nextDouble() * 1.0 - 0.5
-      ..y = _rng!.nextDouble() * 1.0 - 0.5
-      ..z = _rng!.nextDouble() * 1.0 - 0.5;
+      vel
+        ..x = _rng!.nextDouble() * 1.0 - 0.5
+        ..y = _rng!.nextDouble() * 1.0 - 0.5
+        ..z = _rng!.nextDouble() * 1.0 - 0.5;
     }
 
     _setTransform();
   }
 
   void _setCamera(double xOffset) {
-    matView = vec32.makeViewMatrix(vec32.Vector3(-xOffset, 0, 5.2),
-        vec32.Vector3(-xOffset, 0, 0), vec32.Vector3(0, 1, 0),);
+    matView = vec32.makeViewMatrix(
+      vec32.Vector3(-xOffset, 0, 5.2),
+      vec32.Vector3(-xOffset, 0, 0),
+      vec32.Vector3(0, 1, 0),
+    );
   }
 
   void _setTransform() {
@@ -232,7 +259,7 @@ class Indie3dModelController extends ChangeNotifier {
       // Apply drag (for a correct interaction we would
       // also multiply by the area of the
       // object tangent to the velocity direction
-      // but thats hard to calculate 
+      // but thats hard to calculate
       //for arbitrary 3D shapes and we don't care that much here)
       final lvLength = _linearVelocities![i].length;
       if (lvLength.compareTo(0.0) != 0) {
@@ -248,18 +275,20 @@ class Indie3dModelController extends ChangeNotifier {
       _positions![i].y += 1.0 * dt;
       _positions![i] += _linearVelocities![i] * dt;
       // Integrate theangular velocity using the quaternion integration equation
-      _rotations![i] = quaternionExponent(vec32.Quaternion(
-            (_angularVelocities![i].x + _constantAngularVelocities![i].x) *
-                0.5 *
-                dt,
-            (_angularVelocities![i].y + _constantAngularVelocities![i].y) *
-                0.5 *
-                dt,
-            (_angularVelocities![i].z + _constantAngularVelocities![i].z) *
-                0.5 *
-                dt,
-            0,
-          ),) *
+      _rotations![i] = quaternionExponent(
+            vec32.Quaternion(
+              (_angularVelocities![i].x + _constantAngularVelocities![i].x) *
+                  0.5 *
+                  dt,
+              (_angularVelocities![i].y + _constantAngularVelocities![i].y) *
+                  0.5 *
+                  dt,
+              (_angularVelocities![i].z + _constantAngularVelocities![i].z) *
+                  0.5 *
+                  dt,
+              0,
+            ),
+          ) *
           _rotations![i];
       if (_positions![i].y >= 16.0) {
         _positions![i].y = -16.0;

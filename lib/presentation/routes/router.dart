@@ -11,7 +11,8 @@ import 'package:zawadi/presentation/splash/splash_page2.dart';
   routes: <AutoRoute>[
     CupertinoRoute<dynamic>(page: SplashPage),
     CupertinoRoute<dynamic>(
-        page: SplashPage2,), //this is acting like a home page for now
+      page: SplashPage2,
+    ), //this is acting like a home page for now
     CupertinoRoute<dynamic>(page: SignInPage),
     CupertinoRoute<dynamic>(page: SignUpPage),
     CupertinoRoute<dynamic>(page: ForgotPasswordPage),

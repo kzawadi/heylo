@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class Indie3dNavigationIndicator extends StatelessWidget {
-
   const Indie3dNavigationIndicator({
     Key? key,
     required this.pageIndex,
@@ -14,14 +13,14 @@ class Indie3dNavigationIndicator extends StatelessWidget {
     const activeColor = Color(0xFFFFFFFF);
     const defaultColor = Color(0xFFAAAAAA);
     const double width = 20;
-    const  double height = 5;
+    const double height = 5;
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
           width: width,
           height: height,
-          margin:const EdgeInsets.all(2),
+          margin: const EdgeInsets.all(2),
           color: pageIndex == 0 ? activeColor : defaultColor,
         ),
         Container(
@@ -33,7 +32,7 @@ class Indie3dNavigationIndicator extends StatelessWidget {
         Container(
           width: width,
           height: height,
-          margin:const EdgeInsets.all(2),
+          margin: const EdgeInsets.all(2),
           color: pageIndex == 2 ? activeColor : defaultColor,
         ),
       ],

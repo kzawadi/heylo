@@ -75,25 +75,29 @@ class _Indie3dHomeState extends State<Indie3dHome>
   Widget build(BuildContext context) {
     if (!_controller.initialized) {
       precacheImage(
-          const AssetImage(
-            AppAssets.artist1,
-          ),
-          context,);
+        const AssetImage(
+          AppAssets.artist1,
+        ),
+        context,
+      );
       precacheImage(
-          const AssetImage(
-            AppAssets.artist2,
-          ),
-          context,);
+        const AssetImage(
+          AppAssets.artist2,
+        ),
+        context,
+      );
       precacheImage(
-          const AssetImage(
-            AppAssets.artist3,
-          ),
-          context,);
+        const AssetImage(
+          AppAssets.artist3,
+        ),
+        context,
+      );
       precacheImage(
-          const AssetImage(
-            AppAssets.noise,
-          ),
-          context,);
+        const AssetImage(
+          AppAssets.noise,
+        ),
+        context,
+      );
 
       _controller.init(context);
     }
@@ -110,10 +114,11 @@ class _Indie3dHomeState extends State<Indie3dHome>
             Align(
               alignment: Alignment.bottomCenter,
               child: Padding(
-                  padding: const EdgeInsets.only(bottom: 32),
-                  child: Indie3dNavigationIndicator(
-                    pageIndex: _pageIndex,
-                  ),),
+                padding: const EdgeInsets.only(bottom: 32),
+                child: Indie3dNavigationIndicator(
+                  pageIndex: _pageIndex,
+                ),
+              ),
             )
           ],
         ),
@@ -241,8 +246,10 @@ class _Indie3dHomeState extends State<Indie3dHome>
         case 0:
           if (pageProgress > 0.99) {
             _page0TopTitleController.animateTo(1);
-            Future.delayed(const Duration(milliseconds: 200),
-                () => _page0BottomTitleController.animateTo(1),);
+            Future.delayed(
+              const Duration(milliseconds: 200),
+              () => _page0BottomTitleController.animateTo(1),
+            );
           }
           _page1TopTitleController.reset();
           _page1BottomTitleController.reset();
@@ -254,8 +261,10 @@ class _Indie3dHomeState extends State<Indie3dHome>
           _page0BottomTitleController.reset();
           if (pageProgress > 0.99) {
             _page1TopTitleController.animateTo(1);
-            Future.delayed(const Duration(milliseconds: 200),
-                () => _page1BottomTitleController.animateTo(1),);
+            Future.delayed(
+              const Duration(milliseconds: 200),
+              () => _page1BottomTitleController.animateTo(1),
+            );
           }
           _page2TopTitleController.reset();
           _page2BottomTitleController.reset();
@@ -267,8 +276,10 @@ class _Indie3dHomeState extends State<Indie3dHome>
           _page1BottomTitleController.reset();
           if (pageProgress > 0.99) {
             _page2TopTitleController.animateTo(1);
-            Future.delayed(const Duration(milliseconds: 200),
-                () => _page2BottomTitleController.animateTo(1),);
+            Future.delayed(
+              const Duration(milliseconds: 200),
+              () => _page2BottomTitleController.animateTo(1),
+            );
           }
           break;
       }

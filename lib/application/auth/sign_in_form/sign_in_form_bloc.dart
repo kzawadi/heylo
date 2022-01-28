@@ -20,9 +20,11 @@ part 'sign_in_form_state.dart';
 ///it handles form validations and errors
 @injectable
 class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
-  SignInFormBloc(this._registerWithEmailAndPasswordUseCase,
-      this._signInWithEmailAndPasswordUseCase, this._signInWithGoogleUseCase,)
-      : super(SignInFormState.initial()) {
+  SignInFormBloc(
+    this._registerWithEmailAndPasswordUseCase,
+    this._signInWithEmailAndPasswordUseCase,
+    this._signInWithGoogleUseCase,
+  ) : super(SignInFormState.initial()) {
     on<SignInFormEvent>(_signInFormHandler, transformer: sequential());
   }
 
