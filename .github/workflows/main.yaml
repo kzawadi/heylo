@@ -6,7 +6,7 @@ jobs:
   build:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
     with:
-      coverage_excludes: "*.g.dart *.freezed.dart"
+      coverage_excludes: "*.g.dart *.freezed.dart *.dart"
       flutter_channel: "stable"
       # flutter_version: "2.8.1"
       working_directory: "."
