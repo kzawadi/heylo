@@ -25,8 +25,8 @@ class BlendMask extends SingleChildRenderObjectWidget {
 
   @override
   void updateRenderObject(BuildContext context, RenderBlendMask renderObject) {
-    renderObject._blendMode = _blendMode;
-    renderObject._opacity = _opacity;
+    renderObject.._blendMode = _blendMode
+    .._opacity = _opacity;
   }
 }
 
@@ -40,12 +40,13 @@ class RenderBlendMask extends RenderProxyBox {
 
   @override
   void paint(PaintingContext context, Offset offset) {
-    // Create a new layer and specify the blend mode and opacity to composite it with:
+    // Create a new layer and
+    // specify the blend mode and opacity to composite it with:
     context.canvas.saveLayer(
         offset & size,
         Paint()
           ..blendMode = _blendMode
-          ..color = Color.fromARGB((_opacity * 255).round(), 255, 255, 255));
+          ..color = Color.fromARGB((_opacity * 255).round(), 255, 255, 255),);
 
     super.paint(context, offset);
 

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_final_locals, flutter_style_todos
+// ignore_for_file: prefer_final_locals, flutter_style_todos, lines_longer_than_80_chars
 
 import 'dart:async';
 import 'dart:typed_data';
@@ -47,7 +47,7 @@ class OBJLoader {
   late String _objSource;
   late String _mtlSource;
 
-  late List<OBJLoaderFace> _faces;
+  late final List<OBJLoaderFace> _faces;
   final Map<String, OBJLoaderMaterial> _materials;
 
   Future<VertexMesh> parse() async {
@@ -83,12 +83,12 @@ class OBJLoader {
         final args = line.split(' ');
         // args[0] = 'v' args[1..3] = position coords
         positions.add(vec32.Vector3(double.parse(args[1]),
-            double.parse(args[2]), double.parse(args[3])));
+            double.parse(args[2]), double.parse(args[3]),),);
       } else if (line.startsWith('vn ')) {
         final args = line.split(' ');
         // args[0] = 'vn' args[1..3] = normal coords
         normals.add(vec32.Vector3(double.parse(args[1]), double.parse(args[2]),
-            double.parse(args[3])));
+            double.parse(args[3]),),);
       } else if (line.startsWith('vt ')) {
         final args = line.split(' ');
         // args[0] = 'vt' args[1..2] = texture coords
@@ -159,7 +159,7 @@ class OBJLoader {
               255,
               (double.parse(args[1]) * 255).round(),
               (double.parse(args[2]) * 255).round(),
-              (double.parse(args[3]) * 255).round());
+              (double.parse(args[3]) * 255).round(),);
         }
       } else if (line.startsWith('map_Kd ')) {
         if (currentMaterial != null) {
@@ -237,9 +237,6 @@ class OBJLoader {
       uvs[i * 6 + 4] = _faces[i].uvs[2].x;
       uvs[i * 6 + 5] = _faces[i].uvs[2].y;
 
-      print('IS THIS VALUE REALY NULL');
-      print(_materials[_faces[i].materialName]?.diffuseColor?.value ??
-          4278309437);
 
       colors[i * 3 + 0] =
           _materials[_faces[i].materialName]?.diffuseColor?.value ?? 4278309437;
@@ -299,44 +296,44 @@ class VertexMesh {
 
   int get vertexCount => positions!.length ~/ 3;
 
-  void log() {
-    for (var i = 0; i < indices!.length; i += 3) {
-      var x0 = positions![indices![i + 0] * 3 + 0];
-      var y0 = positions![indices![i + 0] * 3 + 1];
-      var z0 = positions![indices![i + 0] * 3 + 2];
+  // void log() {
+  //   for (var i = 0; i < indices!.length; i += 3) {
+  //     var x0 = positions![indices![i + 0] * 3 + 0];
+  //     var y0 = positions![indices![i + 0] * 3 + 1];
+  //     var z0 = positions![indices![i + 0] * 3 + 2];
 
-      var x1 = positions![indices![i + 1] * 3 + 0];
-      var y1 = positions![indices![i + 1] * 3 + 1];
-      var z1 = positions![indices![i + 1] * 3 + 2];
+  //     var x1 = positions![indices![i + 1] * 3 + 0];
+  //     var y1 = positions![indices![i + 1] * 3 + 1];
+  //     var z1 = positions![indices![i + 1] * 3 + 2];
 
-      var x2 = positions![indices![i + 2] * 3 + 0];
-      var y2 = positions![indices![i + 2] * 3 + 1];
-      var z2 = positions![indices![i + 2] * 3 + 2];
+  //     var x2 = positions![indices![i + 2] * 3 + 0];
+  //     var y2 = positions![indices![i + 2] * 3 + 1];
+  //     var z2 = positions![indices![i + 2] * 3 + 2];
 
       // ignore: prefer_interpolation_to_compose_strings
-      print(
-        'f: {' +
-            x0.toStringAsFixed(3) +
-            ', ' +
-            y0.toStringAsFixed(3) +
-            ', ' +
-            z0.toStringAsFixed(3) +
-            '}, {' +
-            x1.toStringAsFixed(3) +
-            ', ' +
-            y1.toStringAsFixed(3) +
-            ', ' +
-            z1.toStringAsFixed(3) +
-            '}, {' +
-            x2.toStringAsFixed(3) +
-            ', ' +
-            y2.toStringAsFixed(3) +
-            ', ' +
-            z2.toStringAsFixed(3) +
-            '}',
-      );
-    }
-  }
+      // print(
+      //   'f: {' +
+      //       x0.toStringAsFixed(3) +
+      //       ', ' +
+      //       y0.toStringAsFixed(3) +
+      //       ', ' +
+      //       z0.toStringAsFixed(3) +
+      //       '}, {' +
+      //       x1.toStringAsFixed(3) +
+      //       ', ' +
+      //       y1.toStringAsFixed(3) +
+      //       ', ' +
+      //       z1.toStringAsFixed(3) +
+      //       '}, {' +
+      //       x2.toStringAsFixed(3) +
+      //       ', ' +
+      //       y2.toStringAsFixed(3) +
+      //       ', ' +
+      //       z2.toStringAsFixed(3) +
+      //       '}',
+      // );
+    // }
+  // }
 }
 
 class VertexMeshInstance {
@@ -437,15 +434,15 @@ class VertexMeshInstance {
 
     // Basic light
     var colors = Int32List(_mesh.vertexCount);
-    final normalTransform = _modelView!.getNormalMatrix();
+    // final normalTransform = _modelView!.getNormalMatrix();
     for (var i = 0; i < colors.length; ++i) {
-      final xn = normalTransform.transform(
-        vec32.Vector3(
-          _mesh.normals![i * 3 + 0],
-          _mesh.normals![i * 3 + 1],
-          _mesh.normals![i * 3 + 2],
-        ).normalized(),
-      );
+      // final xn = normalTransform.transform(
+      //   vec32.Vector3(
+      //     _mesh.normals![i * 3 + 0],
+      //     _mesh.normals![i * 3 + 1],
+      //     _mesh.normals![i * 3 + 2],
+      //   ).normalized(),
+      // );
 
       //xn.dot(vec32.Vector3(0.5, 0.5, 1.0).normalized()).clamp(0.1, 1.0);
       const b = 1.0;

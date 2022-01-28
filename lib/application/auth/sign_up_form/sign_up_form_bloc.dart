@@ -5,7 +5,6 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 import 'package:zawadi/domain/auth/auth_failure.dart';
 import 'package:zawadi/domain/auth/use_cases/auth_use_cases.dart';
 import 'package:zawadi/domain/auth/value_objects.dart';

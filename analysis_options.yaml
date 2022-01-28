@@ -8,6 +8,7 @@ linter:
     library_private_types_in_public_api: false
     always_declare_return_types: true
     prefer_const_constructors: true
+    omit_local_variable_types: false
 
 
 analyzer:

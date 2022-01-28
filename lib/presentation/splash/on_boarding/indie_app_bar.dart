@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
 
 class IndieAppBar extends StatelessWidget {
   const IndieAppBar({Key? key}) : super(key: key);
@@ -17,7 +16,7 @@ class IndieAppBar extends StatelessWidget {
           color: const Color(0xFF010101),
           padding:
               const EdgeInsets.only(top: 8, bottom: 8, left: 50, right: 16),
-          child: Text(
+          child: const Text(
             'FRESH BEATS BY',
             textAlign: TextAlign.right,
             style: TextStyle(

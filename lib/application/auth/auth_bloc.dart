@@ -4,7 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 import 'package:zawadi/domain/auth/use_cases/auth_use_cases.dart';
 import 'package:zawadi/domain/auth/user.dart';
 import 'package:zawadi/domain/core/i_auth_use_cases.dart';

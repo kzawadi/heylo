@@ -6,7 +6,6 @@
 // https://opensource.org/licenses/MIT.
 
 import 'package:designsys/designsys.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:zawadi/application/auth/auth_bloc.dart';
